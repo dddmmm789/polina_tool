@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Processed Image and DMC Output</title>
+</head>
+<body>
+    <h1>Processed Image</h1>
+    <img src="{{ url_for('send_image', filename='processed_image.png') }}" alt="Processed Image"><br><br>
+
+    <a href="{{ url_for('send_image', filename='processed_image.png') }}" download="processed_image.png">Download Processed Image</a><br>
+    
+    <h2>DMC Color Output</h2>
+    <img src="{{ url_for('download_file', filename='dmc_colors_output.jpg') }}" alt="DMC Color Output"><br><br>
+
+    <a href="{{ url_for('download_file', filename='dmc_colors_output.jpg') }}" download="dmc_colors_output.jpg">Download DMC Color Output</a><br>
+
+    <h2>Unique Colors List</h2>
+    <a href="{{ url_for('download_file', filename='unique_colors.txt') }}" download="unique_colors.txt">Download Unique Colors (RGB)</a><br>
+
+    <a href="/">Process Another Image</a>
+</body>
+</html>

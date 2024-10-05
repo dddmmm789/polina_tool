@@ -18,11 +18,14 @@ logging.basicConfig(
 
 # Load DMC colors from the CSV file
 def load_dmc_colors():
-    dmc_colors_path = "/Users/danm/Documents/Embroided/DMC_colors_github.csv"
+    # Update the path to point to the "data" folder
+    dmc_colors_path = os.path.join(os.path.dirname(__file__), "data", "DMC_colors_github.csv")
+    
+    # Read the CSV file using pandas
     dmc_df = pd.read_csv(dmc_colors_path)
     dmc_colors = []
 
-    # Using 'Floss#', 'Description', 'Red', 'Green', 'Blue' columns from the CSV
+    # Process the CSV data
     for _, row in dmc_df.iterrows():
         dmc_colors.append({
             'name': row['Description'],

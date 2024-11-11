@@ -18,14 +18,10 @@ logging.basicConfig(
 
 # Load DMC colors from the CSV file
 def load_dmc_colors():
-    # Update the path to point to the "data" folder
     dmc_colors_path = os.path.join(os.path.dirname(__file__), "data", "DMC_colors_github.csv")
-    
-    # Read the CSV file using pandas
     dmc_df = pd.read_csv(dmc_colors_path)
     dmc_colors = []
 
-    # Process the CSV data
     for _, row in dmc_df.iterrows():
         dmc_colors.append({
             'name': row['Description'],
@@ -55,16 +51,12 @@ def find_closest_dmc_color(rgb, dmc_colors):
 # Function to generate the DMC output image
 def generate_dmc_output_image(cluster_centers):
     print("Starting DMC color output generation...")
-
-    # Load the DMC colors
     dmc_colors = load_dmc_colors()
-
-    # Create an image to display the DMC color output
     chart_width = 800
-    chart_height = len(cluster_centers) * 80  # Adjust height to fit DMC and RGB info
+    chart_height = len(cluster_centers) * 80
     chart_image = Image.new("RGB", (chart_width, chart_height), (255, 255, 255))
     draw = ImageDraw.Draw(chart_image)
-
+    
     # Load a font (or use default if unavailable)
     try:
         font = ImageFont.truetype("arial.ttf", 15)
@@ -153,8 +145,11 @@ def upload_image():
         image_path = os.path.join("uploads", file.filename)
         file.save(image_path)
 
-        # Get the number of colors from the form
+        # Get the number of colors from the form and validate
         max_colors = int(request.form.get("colors"))
+        allowed_colors = [3,4,5, 6, 7, 8, 9, 10, 20, 30]  # Added allowed color options
+        if max_colors not in allowed_colors:
+            return "Invalid number of colors selected."
 
         # Process the image
         image = load_image(image_path)

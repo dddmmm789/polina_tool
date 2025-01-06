@@ -1,4 +1,6 @@
 # Palina’s Embroidery Studio
+Embroidery Studio, a web application designed to help you convert images into beautiful embroidery patterns using DMC colors.
+
 
 Welcome to Palina’s Embroidery Studio, a web application designed to help you convert images into beautiful embroidery patterns using DMC colors. This tool utilizes image processing and machine learning techniques to create color palettes that match your images, making embroidery easy and fun!
 WHile the input is any photograph.The output is a simplified embroidery pattern and a list of DMC threads to purchase. 
